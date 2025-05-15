@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Job Editor – Imaginary Corp</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f4f4; padding: 2rem; }
+    h1 { color: #2a9d8f; }
+    input, textarea { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 5px; border: 1px solid #ccc; }
+    button { padding: 0.6rem 1.2rem; background: #e76f51; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    table { width: 100%; border-collapse: collapse; margin-top: 2rem; background: white; }
+    th, td { padding: 0.75rem; border: 1px solid #ccc; text-align: left; }
+    th { background: #264653; color: white; }
+    .container { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 900px; margin: auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Imaginary Corp – Job Editor</h1>
+    
+    <h2>Add a New Job</h2>
+    <form id="jobForm">
+      <input type="text" id="title" placeholder="Job Title" required />
+      <input type="text" id="location" placeholder="Location" required />
+      <input type="text" id="department" placeholder="Department" required />
+      <textarea id="description" placeholder="Short Description" required></textarea>
+      <input type="text" id="url" placeholder="Page URL (e.g., dream-architect.html)" required />
+      <button type="submit">Add Job</button>
+    </form>
+
+    <button onclick="downloadJobs()">Download jobs.json</button>
+
+    <h2>Current Jobs</h2>
+    <table id="jobsTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Location</th>
+          <th>Department</th>
+          <th>Description</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    let jobs = [];
+
+    // Load existing jobs from jobs.json
+    fetch('jobs.json')
+      .then(res => res.json())
+      .then(data => {
+        jobs = data;
+        renderJobs();
+      });
+
+    // Handle form submission
+    document.getElementById('jobForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newJob = {
+        title: document.getElementById('title').value,
+        location: document.getElementById('location').value,
+        department: document.getElementById('department').value,
+        description: document.getElementById('description').value,
+        url: document.getElementById('url').value
+      };
+      jobs.push(newJob);
+      renderJobs();
+      this.reset();
+    });
+
+    // Render the jobs table
+    function renderJobs() {
+      const tbody = document.querySelector('#jobsTable tbody');
+      tbody.innerHTML = '';
+      jobs.forEach(job => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${job.title}</td>
+          <td>${job.location}</td>
+          <td>${job.department}</td>
+          <td>${job.description}</td>
+          <td>${job.url}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Download updated jobs.json
+    function downloadJobs() {
+      const blob = new Blob([JSON.stringify(jobs, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = 'jobs.json';
+      link.href = url;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
