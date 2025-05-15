@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Dream Architect",
+    "location": "Tokyo, Japan",
+    "department": "Subconscious Solutions",
+    "description": "Design dreamscapes for high-profile clients. Lucid thinking & surreal UX encouraged.",
+    "url": "dream-architect.html"
+  },
+  {
+    "title": "Chief Unicorn Wrangler",
+    "location": "Remote",
+    "department": "Mythical Operations",
+    "description": "Tame unicorns and manage sparkle logistics. Glitter tolerance mandatory.",
+    "url": "chief-unicorn-wrangler.html"
+  },
+  {
+    "title": "Time Travel Researcher",
+    "location": "Geneva, Switzerland",
+    "department": "Temporal Engineering",
+    "description": "Investigate causality loops and quantum chronon particles.",
+    "url": "time-travel-researcher.html"
+  }
+]
