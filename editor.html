@@ -98,8 +98,7 @@
       link.click();
       URL.revokeObjectURL(url);
     }
-  </script>
-<script>
+ <script>
   let jobs = [];
 
   // Load from localStorage
@@ -107,7 +106,6 @@
     jobs = JSON.parse(localStorage.getItem('imaginaryJobs'));
     renderJobs();
   } else {
-    // Load from jobs.json as fallback
     fetch('jobs.json')
       .then(res => res.json())
       .then(data => {
@@ -117,52 +115,5 @@
       });
   }
 
-  // Save to localStorage
   function saveToLocal() {
-    localStorage.setItem('imaginaryJobs', JSON.stringify(jobs));
-  }
-
-  // Handle form submission
-  document.getElementById('jobForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const newJob = {
-      title: document.getElementById('title').value,
-      location: document.getElementById('location').value,
-      department: document.getElementById('department').value,
-      description: document.getElementById('description').value,
-      url: document.getElementById('url').value
-    };
-    jobs.push(newJob);
-    saveToLocal();
-    renderJobs();
-    this.reset();
-  });
-
-  // Render the jobs table
-  function renderJobs() {
-    const tbody = document.querySelector('#jobsTable tbody');
-    tbody.innerHTML = '';
-    jobs.forEach(job => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${job.title}</td>
-        <td>${job.location}</td>
-        <td>${job.department}</td>
-        <td>${job.description}</td>
-        <td>${job.url}</td>
-      `;
-      tbody.appendChild(row);
-    });
-  }
-
-  // Download updated jobs.json
-  function downloadJobs() {
-    const blob = new Blob([JSON.stringify(jobs, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.download = 'jobs.json';
-    link.href = url;
-    link.click();
-    URL.revokeObjectURL(url);
-  }
-</
+    localStorage.setItem('imaginaryJobs', JSON
