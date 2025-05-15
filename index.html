@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Imaginary Corp Careers</title>
   <style>
     body { font-family: Arial, sans-serif; background: #f5f8fb; margin: 0; padding: 0; }
     header { background: #2a9d8f; color: white; padding: 2rem; text-align: center; }
     h1 { margin: 0 0 0.5rem; }
     .tagline { font-size: 1.2rem; font-weight: 300; }
-    .job-listings, .apply-form, .dashboard { padding: 2rem; max-width: 800px; margin: 0 auto; }
+    .job-listings { padding: 2rem; max-width: 800px; margin: 0 auto; }
     .job-card { background: white; margin-bottom: 1.5rem; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .job-card h2 { margin-top: 0; color: #264653; }
     .job-card p { margin: 0.5rem 0; }
-    form input, form textarea, form select { width: 100%; padding: 0.5rem; margin-top: 0.5rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; }
-    form button { background: #e76f51; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 5px; cursor: pointer; }
-    .dashboard h2 { color: #264653; }
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; }
-    th { background: #264653; color: white; }
+    .view-apply { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #e76f51; color: white; border-radius: 5px; text-decoration: none; }
     footer { text-align: center; padding: 1rem; background: #264653; color: white; margin-top: 2rem; }
   </style>
 </head>
@@ -34,83 +29,28 @@
       <p><strong>Location:</strong> Geneva, Switzerland</p>
       <p><strong>Department:</strong> Temporal Engineering</p>
       <p>Help us investigate causality loops and chronon particles. Background in theoretical physics and imagination required.</p>
+      <a class="view-apply" href="./time-travel-researcher.html">View & Apply</a>
     </div>
+
     <div class="job-card">
       <h2>Chief Unicorn Wrangler</h2>
       <p><strong>Location:</strong> Remote</p>
       <p><strong>Department:</strong> Mythical Operations</p>
       <p>Seeking someone to tame and manage our ever-growing stable of sparkly unicorns. Glitter tolerance a must.</p>
+      <a class="view-apply" href="./chief-unicorn-wrangler.html">View & Apply</a>
     </div>
+
     <div class="job-card">
       <h2>Dream Architect</h2>
       <p><strong>Location:</strong> Tokyo, Japan</p>
       <p><strong>Department:</strong> Subconscious Solutions</p>
       <p>Design and build dreamscapes for high-profile clients. Experience in lucid dreaming and surreal UI/UX a plus.</p>
+      <a class="view-apply" href="./dream-architect.html">View & Apply</a>
     </div>
-  </section>
-
-  <section class="apply-form">
-    <h2>Apply Now</h2>
-    <form id="applicationForm">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="position">Position Applying For</label>
-      <select id="position" name="position">
-        <option value="Time Travel Researcher">Time Travel Researcher</option>
-        <option value="Chief Unicorn Wrangler">Chief Unicorn Wrangler</option>
-        <option value="Dream Architect">Dream Architect</option>
-      </select>
-
-      <label for="message">Cover Letter / Message</label>
-      <textarea id="message" name="message" rows="4"></textarea>
-
-      <button type="submit">Submit Application</button>
-    </form>
-  </section>
-
-  <section class="dashboard">
-    <h2>ATS Dashboard</h2>
-    <table id="atsTable">
-      <thead>
-        <tr>
-          <th>Candidate Name</th>
-          <th>Position</th>
-          <th>Message</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Applications will appear here -->
-      </tbody>
-    </table>
   </section>
 
   <footer>
     &copy; 2025 Imaginary Corp – We’re real in your heart.
   </footer>
-
-  <script>
-    const form = document.getElementById('applicationForm');
-    const table = document.getElementById('atsTable').querySelector('tbody');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const position = document.getElementById('position').value;
-      const message = document.getElementById('message').value;
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${name}</td>
-        <td>${position}</td>
-        <td>${message}</td>
-        <td>Received</td>
-      `;
-
-      table.appendChild(row);
-      form.reset();
-    });
-  </script>
 </body>
 </html>
